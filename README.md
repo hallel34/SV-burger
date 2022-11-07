@@ -1,4 +1,7 @@
 
-# Haikus for Codespaces
+# SV burger Reservation Automation test
 
-This is a quick node project template for demoing Codespaces. It is based off of the [Azure node sample](https://github.com/Azure-Samples/nodejs-docs-hello-world). It's great!!!
+in this project i did a test on the site SVburger 
+the test including sanity test Functionalty test,error handling boundry limit test
+i hope you find that the code is clean and orgnized 
+
