@@ -10,18 +10,16 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
-import xpath.test22
-from xpath.test22 import *
+import screenshots
+from URL.XPATH import *
+from URL.Functions import *
 
 
 
 
-
-
-
-# """sanity test"""
+"""sanity test"""
 def test_sanity(setup):
-    signin_button(setup)
+    signin_button1(setup)
     email(setup)
     password(setup)
     sign_in_button(setup)
@@ -32,12 +30,14 @@ def test_sanity(setup):
     table(setup)
     price(setup)
     try:
-       assert table == "Table no 1"
+        assert table == "Table no 1"
     except:
-       assert price == "Total: 42.9$"
+        assert price == "Total: 42.9$"
+
 
 """sign up page"""
 """1.1 Functionality – register only with required field"""
+
 
 def test_sign_up(setup):
     sign_up(setup)
@@ -53,9 +53,8 @@ def test_sign_up(setup):
     print(text)
 
 
-
-
 """1.2 Functionality – register with 7 chars on First Name"""
+
 
 def test_first_name(setup):
     sign_up(setup)
@@ -74,6 +73,7 @@ def test_first_name(setup):
 
 """ 1.3 Functionality register with email address with .co.il ending:"""
 
+
 def test_mail_field(setup):
     sign_up(setup)
     first_name(setup)
@@ -85,6 +85,7 @@ def test_mail_field(setup):
 
 
 """ 1.4 Functionality - register with 5 char in password field"""
+
 
 def test_password_field(setup):
     sign_up(setup)
@@ -98,6 +99,7 @@ def test_password_field(setup):
 
 
 """1.5 Functionality -  Sign up with 11 characters on first name"""
+
 
 def test_sign_up_with_11_char(setup):
     sign_up(setup)
@@ -115,8 +117,8 @@ def test_sign_up_with_11_char(setup):
     print(text_mess)
 
 
-
 """1.1 Error handling - register with hebrew letters in password field"""
+
 
 def test_password_field1(setup):
     sign_up(setup)
@@ -134,11 +136,8 @@ def test_password_field1(setup):
     print(text_mess)
 
 
-
-
-
-
 """1.2 Error handling - MISSING FIRST NAME"""
+
 
 def test_01_missing_first_name(setup):
     sign_up(setup)
@@ -155,14 +154,10 @@ def test_01_missing_first_name(setup):
     print(text)
 
 
-
-
-
-
-
 """sign_in page
 
 2.1 Functionality - insert mail address with ".walla.co.il" ending"""
+
 
 def test_mail_address_field(setup):
     sign_up(setup)
@@ -179,6 +174,7 @@ def test_mail_address_field(setup):
     sign_in_button(setup)
     combo_meal(setup)
     assert combo_meal(setup)
+
 
 """2.2 Functionality - insert mail address with hotmail ending"""
 
@@ -198,10 +194,8 @@ def test_mail_address_field_hotmail(setup):
     sign_in_button(setup)
 
 
-
-
-
 """2.3 Functionality - click on "forgot password" button"""
+
 
 def test_forgot_password_button(setup):
     signin_button(setup)
@@ -209,6 +203,7 @@ def test_forgot_password_button(setup):
 
 
 """2.4 Functionality - enter wrong password with correct email address"""
+
 
 def test_wrong_password(setup):
     signin_button(setup)
@@ -220,7 +215,10 @@ def test_wrong_password(setup):
     assert text_mess == "Failed to log in"
     print(text_mess)
 
+
 """3.5 Functionality – change location weather to Jerusalem"""
+
+
 def test_weather_jerusalem(setup):
     signin_button(setup)
     clear_location(setup)
@@ -228,7 +226,9 @@ def test_weather_jerusalem(setup):
     search_button(setup)
     assert jerusalem(setup) == True
 
+
 """2.6 Error Handling - enter mail address without sign up first"""
+
 
 def test_enter_mail_address(setup):
     signin_button(setup)
@@ -243,6 +243,7 @@ def test_enter_mail_address(setup):
 
 """2.7 Error Handling -  enter email with no passworrd"""
 
+
 def test_email(setup):
     signin_button(setup)
     email(setup)
@@ -253,10 +254,11 @@ def test_email(setup):
     print(text_mess)
 
 
-
 """SUit 3 Reservation and confirm reservation"""
 
 """1.1 Functionality – Select 2 meals"""
+
+
 def test_select_2_meals(setup):
     signin_button(setup)
     email(setup)
@@ -275,6 +277,7 @@ def test_select_2_meals(setup):
 
 """1.2 Functionality – Select same meal twice to cancel order."""
 
+
 def test_select_same_meal_twice(setup):
     signin_button(setup)
     email(setup)
@@ -287,6 +290,7 @@ def test_select_same_meal_twice(setup):
 
 """1.3 Functionality – press on “Log out”."""
 
+
 def test_click_on_log_out_button(setup):
     signin_button(setup)
     email(setup)
@@ -294,8 +298,11 @@ def test_click_on_log_out_button(setup):
     sign_in_button(setup)
     log_out(setup)
     print("log out successful")
+
+
 #
 """1.4 Functionality – insert 2 in Product / Quantity field."""
+
 
 def test_insert_2_in_product_field(setup):
     signin_button(setup)
@@ -310,14 +317,11 @@ def test_insert_2_in_product_field(setup):
     quantity(setup)
     send_button(setup)
     assert price2(setup) is False
-    print(price2,"is not true")
-
-
-
-
+    print(price2, "is not true")
 
 
 """1.5 Functionality - insert number 5 to table number field"""
+
 
 def test_insert_5_to_table_number_field(setup):
     signin_button(setup)
@@ -334,7 +338,9 @@ def test_insert_5_to_table_number_field(setup):
     assert table2(setup) == "Table No 5"
     print(table2(setup))
 
+
 """1.6 Error Handling - insert 3 to quantity field"""
+
 
 def test_insert_number_3(setup):
     signin_button(setup)
@@ -352,7 +358,9 @@ def test_insert_number_3(setup):
     assert price3(setup) == "Total: 117$"
     print("Invalid value in quantity")
 
+
 """1.7 Error Handling - choose 4 dishes """
+
 
 def test_choose_4_dish(setup):
     signin_button(setup)
@@ -374,7 +382,3 @@ def test_choose_4_dish(setup):
     time.sleep(1)
     assert headline(setup)
     print("order not be done")
-
-
-
-
